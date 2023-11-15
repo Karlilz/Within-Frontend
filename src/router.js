@@ -1,34 +1,22 @@
 // Import necessary modules
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import {createBrowserRouter,createRoutesFromElements,Route} from "react-router-dom";
 
 // Import your components
-import Home from './components/Home';
-import Journal from './components/Journal';
-import Goals from './components/Goals';
-import Progress from './components/Progress';
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import App from './App';
 
 // Main Router component
-const AppRouter = () => {
-  return (
-    <Router>
-      <Switch>
-        {/* Route for the home page */}
-        <Route path="/" exact component={Home} />
-
-        {/* Route for the journal page */}
-        <Route path="/journal" component={Journal} />
-
-        {/* Route for the goals page */}
-        <Route path="/goals" component={Goals} />
-
-        {/* Route for the progress page */}
-        <Route path="/progress" component={Progress} />
-
-        {/* Add more routes as needed */}
-      </Switch>
-    </Router>
+const router = createBrowserRouter(
+    createRoutesFromElements(
+      <>
+        <Route path="/" element={<App />}>
+            <Route path="/login" element={<Login/>}/>
+            <Route path="/signup" element={<Signup/>}/>
+        </Route>
+      </>
+    )
   );
-};
-
-export default AppRouter;
+  
+  export default router;
