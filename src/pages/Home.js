@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import affirmations from './components/affirmations'; // Update the path accordingly
+import { Link } from 'react-router-dom';
+import affirmations from '../components/affirmations.js';
 
 const Home = () => {
   const [currentAffirmation, setCurrentAffirmation] = useState('');
@@ -10,45 +11,38 @@ const Home = () => {
       setCurrentAffirmation(affirmations[randomIndex]);
     };
 
-    const intervalId = setInterval(updateAffirmation, 10000);
-
     updateAffirmation();
+
+    const intervalId = setInterval(updateAffirmation, 6000);
 
     return () => clearInterval(intervalId);
   }, []);
 
   return (
     <div>
-      <h1>Within</h1>
-
+    <h1>Within</h1>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/journal">Journal Entires</Link>
+          </li>
+          <li>
+            <Link to="/goals">Goals</Link>
+          </li>
+          {/* <li>
+            <Link to="/progress">Progress</Link>
+          </li> */}
+          <li>
+            <Link to="/profile">Profile</Link>
+          </li>
+          <li>
+            <Link to="/logout">Logout</Link>
+          </li>
+        </ul>
+      </nav>
+      <p>{currentAffirmation}</p>
     </div>
   );
 };
 
 export default Home;
-
-
-// import React, { useState } from 'react';
-// import affirmations from './path-to-your-affirmations-file'; // Update the path
-
-// const Home = () => {
-//   const [randomAffirmation, setRandomAffirmation] = useState('');
-
-//   const getRandomAffirmation = () => {
-//     const randomIndex = Math.floor(Math.random() * affirmations.length);
-//     setRandomAffirmation(affirmations[randomIndex]);
-//   };
-
-//   // Call this function to set a random affirmation when the component mounts
-//   // You can also trigger it based on user interactions or at specific intervals
-//   getRandomAffirmation();
-
-//   return (
-//     <div>
-//       <h1>Your Home Page</h1>
-//       <p>{randomAffirmation}</p>
-//     </div>
-//   );
-// };
-
-// export default Home;
