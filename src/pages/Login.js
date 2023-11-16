@@ -14,7 +14,7 @@ const Login = () => {
     formData.append('password', password);
 
     try {
-      const response = await fetch("http://localhost:8000/login/", {
+      const response = await fetch("http://localhost:3000/login/", {
         method: 'POST',
         body: formData,
       });
@@ -34,12 +34,8 @@ const Login = () => {
     }
   };
 
-  const handleSignUpClick = () => {
-    navigate('/signup');
-  };
-
   const backgroundStyle = {
-    backgroundImage: 'url(/Images/LoginPage4.png)',
+    backgroundImage: 'url(/Images/LoginPage6.png)',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     height: '100vh',
@@ -52,23 +48,23 @@ const Login = () => {
   return (
     <div className="login-container" style={backgroundStyle}>
       <div className="login-header">
-        {/* <h1>Within</h1> */}
-        <h1>Welcome Back!</h1>
+        <h1 style={{ fontSize: '140px', color: 'black', margin: '0', fontFamily: 'Staatliches' }}>Within</h1>
+        <h2 style={{ fontSize: '60px', color: 'black', margin: '0', fontFamily: 'Staatliches' }}>Welcome Back to Your Inner Strength</h2>
       </div>
       <form onSubmit={handleSubmit} className="login-form">
         <div>
-          <label>Username</label>
           <input
             type="text"
+            placeholder="Username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             className="login-input"
           />
         </div>
         <div>
-          <label>Password</label>
           <input
             type="password"
+            placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             className="login-input"
