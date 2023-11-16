@@ -89,6 +89,7 @@ const Goal = () => {
   };
 
   const handleDeleteGoal = async (goalId) => {
+    console.log("goalId: ", goalId)
     try {
       const response = await fetch(URL + `goals/${goalId}/`, {
         method: 'DELETE',
@@ -123,6 +124,7 @@ const Goal = () => {
 
         const goalsData = await response.json();
         setGoals(goalsData);
+        console.log(goalsData)
       } catch (error) {
         console.error('Error fetching goals:', error.message);
       }
@@ -224,7 +226,7 @@ const Goal = () => {
                 <>
                   {goal.content}
                   <button onClick={() => handleEditGoal(goal.id)}>Edit</button>
-                  <button onClick={() => handleDeleteGoal(goal.id)}>Delete</button>
+                  <button onClick={() => handleDeleteGoal(goal._id)}>Delete</button>
                 </>
               )}
             </li>
