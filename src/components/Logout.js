@@ -1,17 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Logout = () => {
-    const logout = async (e) => {
-        e.preventDefault()
-        localStorage.removeItem('token')
-        window.location.href = '/within'
-    }
+  const navigate = useNavigate();
 
-  return (
-    <div>
-        <button onClick={logout}>Log Out</button>
-    </div>
-  )
-}
+  useEffect(() => {
+    const logout = async () => {
+      localStorage.removeItem('token');
+      navigate('/within');
+    };
 
-export default Logout
+    logout(); 
+  }, [navigate]);
+
+  return null;
+};
+
+export default Logout;
+
