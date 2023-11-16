@@ -152,9 +152,6 @@ const Home = () => {
           <li style={navItemStyle}>
             <Link to="/goal" style={navLinkStyle}>Goals</Link>
           </li>
-          {/* <li style={navItemStyle}>
-            <Link to="/progress" style={navLinkStyle}>Progress</Link>
-          </li> */}
           <li style={navItemStyle}>
             <Link to="/profile" style={navLinkStyle}>Profile</Link>
           </li>

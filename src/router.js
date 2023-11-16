@@ -10,6 +10,7 @@ import Welcome from './pages/Welcome';
 import Home from './pages/Home';
 import JournalNew from './pages/JournalNew';
 import Goal from './pages/Goal'
+import Profile from './pages/Profile';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -21,6 +22,7 @@ const router = createBrowserRouter(
             <Route path="/signup" element={<Signup/>}/>
             <Route path="/journal" element={<JournalNew/>}/>
             <Route path="/goal" element={<Goal/>}/>
+            <Route path='/profile' element={<Profile/>}/>
         </Route>
       </>
     )
