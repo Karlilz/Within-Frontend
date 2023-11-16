@@ -279,24 +279,25 @@
 
 
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link} from 'react-router-dom';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 const URL = "http://localhost:3000/";
 
 const Goal = () => {
   const [newGoal, setNewGoal] = useState('');
-  const [newDueDate, setNewDueDate] = useState('');
+  const [newDueDate, setNewDueDate] = useState(null);
   const [goals, setGoals] = useState([]);
   const [editingGoalId, setEditingGoalId] = useState(null);
   const [editedGoalText, setEditedGoalText] = useState('');
-  const [editedDueDate, setEditedDueDate] = useState('');
-  const navigate = useNavigate();
+  const [editedDueDate, setEditedDueDate] = useState(null);
 
   const handleInputChange = (e) => {
     setNewGoal(e.target.value);
   };
 
-  const handleDueDateChange = (e) => {
-    setNewDueDate(e.target.value);
+  const handleDueDateChange = (date) => {
+    setNewDueDate(date);
   };
 
   const handleAddGoal = async () => {
@@ -322,7 +323,7 @@ const Goal = () => {
         const newGoalItem = await response.json();
         setGoals([...goals, newGoalItem]);
         setNewGoal('');
-        setNewDueDate('');
+        setNewDueDate(null);
       } catch (error) {
         console.error('Error adding goal:', error.message);
       }
@@ -335,7 +336,7 @@ const Goal = () => {
     setEditingGoalId(goalId);
     const goalToEdit = goals.find((goal) => goal.id === goalId);
     setEditedGoalText(goalToEdit.content);
-    setEditedDueDate(goalToEdit.dueDate);
+    setEditedDueDate(goalToEdit.dueDate ? new Date(goalToEdit.dueDate) : null);
   };
 
   const handleSaveEditedGoal = async () => {
@@ -414,12 +415,59 @@ const Goal = () => {
     fetchGoals();
   }, []);
 
+  // Additional styles for horizontal navigation
+  const navStyle = {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    background: '#333', // Background color for the navigation bar
+    padding: '10px', // Add padding for better aesthetics
+    marginBottom: '80px', // Increase marginBottom to move the nav bar further up
+  };
+
+  const navItemStyle = {
+    margin: '0 15px', // Adjust spacing between navigation items
+  };
+
+  const navLinkStyle = {
+    color: 'white', // Text color for navigation links
+    textDecoration: 'none',
+    fontSize: '18px', // Adjust the font size of the links
+  };
+
+  // Adjustments for h1 and nav positions
+  const h1Style = {
+    fontFamily: 'Staatliches',
+    fontSize: '80px',
+    color: 'black',
+    marginTop: '20px', // Increase marginTop to move the h1 down
+  };
+
   return (
     <div>
+      <h1 style={h1Style}>Within</h1>
+
+      <nav style={navStyle}>
+        <ul style={{ listStyleType: 'none', padding: 0, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <li style={navItemStyle}>
+            <Link to="/home" style={navLinkStyle}>Home</Link>
+          </li>
+          <li style={navItemStyle}>
+            <Link to="/journal" style={navLinkStyle}>Journal Entries</Link>
+          </li>
+          <li style={navItemStyle}>
+            <Link to="/profile" style={navLinkStyle}>Profile</Link>
+          </li>
+          <li style={navItemStyle}>
+            <Link to="/logout" style={navLinkStyle}>Logout</Link>
+          </li>
+        </ul>
+      </nav>
+
       <h2>Create a New Goal</h2>
       <div>
-        <label htmlFor="newGoal">Goal:</label>
         <input
+          placeholder='Goal'
           type="text"
           id="newGoal"
           value={newGoal}
@@ -427,12 +475,11 @@ const Goal = () => {
         />
       </div>
       <div>
-        <label htmlFor="newDueDate">Due Date:</label>
-        <input
-          type="date"
-          id="newDueDate"
-          value={newDueDate}
+        <DatePicker
+          placeholderText="Select Due Date"
+          selected={newDueDate}
           onChange={handleDueDateChange}
+          dateFormat="MM/dd/yyyy"
         />
       </div>
       <button onClick={handleAddGoal}>Add Goal</button>
@@ -451,10 +498,11 @@ const Goal = () => {
                     value={editedGoalText}
                     onChange={(e) => setEditedGoalText(e.target.value)}
                   />
-                  <input
-                    type="date"
-                    value={editedDueDate}
-                    onChange={(e) => setEditedDueDate(e.target.value)}
+                  <DatePicker
+                    placeholderText="Select Due Date"
+                    selected={editedDueDate}
+                    onChange={(date) => setEditedDueDate(date)}
+                    dateFormat="MM/dd/yyyy"
                   />
                   <button onClick={handleSaveEditedGoal}>Save</button>
                 </>
@@ -480,3 +528,4 @@ const Goal = () => {
 };
 
 export default Goal;
+
