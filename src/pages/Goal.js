@@ -94,8 +94,7 @@
 
 // export default Goal;
 
-
-// WITH FETCH REQUESTS 
+// WITHOUT DUEDATE FIELD
 // import React, { useState, useEffect } from 'react';
 // import { Link, useNavigate } from 'react-router-dom';
 // const URL = "http://localhost:3000/"
@@ -121,7 +120,10 @@
 //             'Authorization': `Token ${localStorage.getItem('token')}`,
 //             'Content-Type': 'application/json',
 //           },
-//           body: JSON.stringify({ text: newGoal }),
+//           body: JSON.stringify({
+//             content: newGoal,
+//             dueDate: "2023-12-31",
+//           }),
 //         });
 
 //         if (!response.ok) {
@@ -142,7 +144,7 @@
 //   const handleEditGoal = (goalId) => {
 //     setEditingGoalId(goalId);
 //     const goalToEdit = goals.find((goal) => goal.id === goalId);
-//     setEditedGoalText(goalToEdit.text);
+//     setEditedGoalText(goalToEdit.content);
 //   };
 
 //   const handleSaveEditedGoal = async () => {
@@ -154,13 +156,16 @@
 //           'Authorization': `Token ${localStorage.getItem('token')}`,
 //           'Content-Type': 'application/json',
 //         },
-//         body: JSON.stringify({ text: editedGoalText }),
+//         body: JSON.stringify({
+//           content: editedGoalText,
+//           goal: "Updated Goal Description",
+//         }),
 //       });
-
+  
 //       if (!response.ok) {
 //         throw new Error('Failed to save edited goal');
 //       }
-
+  
 //       const updatedGoal = await response.json();
 //       const updatedGoals = goals.map((goal) =>
 //         goal.id === editingGoalId ? updatedGoal : goal
@@ -171,6 +176,7 @@
 //       console.error('Error saving edited goal:', error.message);
 //     }
 //   };
+  
 
 //   const handleDeleteGoal = async (goalId) => {
 //     try {
@@ -249,7 +255,7 @@
 //                 </>
 //               ) : (
 //                 <>
-//                   {goal.text}
+//                   {goal.content}
 //                   <button onClick={() => handleEditGoal(goal.id)}>Edit</button>
 //                   <button onClick={() => handleDeleteGoal(goal.id)}>Delete</button>
 //                 </>
@@ -271,19 +277,26 @@
 // export default Goal;
 
 
+
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-const URL = "http://localhost:3000/"
+const URL = "http://localhost:3000/";
 
 const Goal = () => {
   const [newGoal, setNewGoal] = useState('');
+  const [newDueDate, setNewDueDate] = useState('');
   const [goals, setGoals] = useState([]);
   const [editingGoalId, setEditingGoalId] = useState(null);
   const [editedGoalText, setEditedGoalText] = useState('');
+  const [editedDueDate, setEditedDueDate] = useState('');
   const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     setNewGoal(e.target.value);
+  };
+
+  const handleDueDateChange = (e) => {
+    setNewDueDate(e.target.value);
   };
 
   const handleAddGoal = async () => {
@@ -297,8 +310,8 @@ const Goal = () => {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            text: newGoal,
-            dueDate: /* Your dueDate value here */
+            content: newGoal,
+            dueDate: newDueDate,
           }),
         });
 
@@ -309,6 +322,7 @@ const Goal = () => {
         const newGoalItem = await response.json();
         setGoals([...goals, newGoalItem]);
         setNewGoal('');
+        setNewDueDate('');
       } catch (error) {
         console.error('Error adding goal:', error.message);
       }
@@ -320,7 +334,8 @@ const Goal = () => {
   const handleEditGoal = (goalId) => {
     setEditingGoalId(goalId);
     const goalToEdit = goals.find((goal) => goal.id === goalId);
-    setEditedGoalText(goalToEdit.text);
+    setEditedGoalText(goalToEdit.content);
+    setEditedDueDate(goalToEdit.dueDate);
   };
 
   const handleSaveEditedGoal = async () => {
@@ -333,8 +348,9 @@ const Goal = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          text: editedGoalText,
-          goal: /* Your goal value here */
+          content: editedGoalText,
+          dueDate: editedDueDate,
+          goal: "Updated Goal Description",
         }),
       });
 
@@ -410,6 +426,15 @@ const Goal = () => {
           onChange={handleInputChange}
         />
       </div>
+      <div>
+        <label htmlFor="newDueDate">Due Date:</label>
+        <input
+          type="date"
+          id="newDueDate"
+          value={newDueDate}
+          onChange={handleDueDateChange}
+        />
+      </div>
       <button onClick={handleAddGoal}>Add Goal</button>
 
       <h2>Goal List</h2>
@@ -426,11 +451,16 @@ const Goal = () => {
                     value={editedGoalText}
                     onChange={(e) => setEditedGoalText(e.target.value)}
                   />
+                  <input
+                    type="date"
+                    value={editedDueDate}
+                    onChange={(e) => setEditedDueDate(e.target.value)}
+                  />
                   <button onClick={handleSaveEditedGoal}>Save</button>
                 </>
               ) : (
                 <>
-                  {goal.text}
+                  {goal.content}
                   <button onClick={() => handleEditGoal(goal.id)}>Edit</button>
                   <button onClick={() => handleDeleteGoal(goal.id)}>Delete</button>
                 </>

@@ -96,7 +96,6 @@ const Profile = () => {
           </ul>
         </div>
       ) : (
-        // <p>Loading...</p>
         null
       )}
 

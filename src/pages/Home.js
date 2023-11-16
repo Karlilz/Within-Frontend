@@ -139,6 +139,16 @@ const Home = () => {
     color: 'black',
     marginTop: '20px', // Increase marginTop to move the h1 down
   };
+  const backgroundStyle = {
+    backgroundImage: 'url(/Images/HomePage1.png)',
+    backgroundSize: 'cover',
+    backgroundPosition: 'right bottom', // Set to 'right bottom'
+    height: '100vh',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  };
 
   return (
     <div>
