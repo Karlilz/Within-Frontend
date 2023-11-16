@@ -9,15 +9,25 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const formData = new FormData();
-    formData.append('username', username);
-    formData.append('password', password);
+    // const formData = new FormData();
+    // formData.append('username', username);
+    // formData.append('password', password);
 
-    try {
-      const response = await fetch("http://localhost:3000/login/", {
-        method: 'POST',
-        body: formData,
-      });
+    // try {
+    //   const response = await fetch("http://localhost:3000/login/", {
+    //     method: 'POST',
+    //     body: formData,
+    //   });
+
+
+      // async function signUp(e) {
+      //   e.preventDefault();
+        const response = await fetch('http://localhost:3000/login', {
+        // const response = await fetch('https://within.onrender.com', {
+          method: 'POST',
+          body: JSON.stringify({ username, password }),
+          headers: { 'Content-Type': 'application/json' },
+        });
 
       if (response.ok) {
         const data = await response.json();
@@ -29,9 +39,9 @@ const Login = () => {
       } else {
         console.error('Login failed');
       }
-    } catch (error) {
-      console.error('Error:', error);
-    }
+    // }, catch (error) {
+    //   console.error('Error:', error);
+    // }
   };
 
   const backgroundStyle = {
@@ -78,6 +88,5 @@ const Login = () => {
       </button>
     </div>
   );
-}
-
+  }
 export default Login;
