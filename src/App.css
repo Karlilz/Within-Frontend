@@ -100,10 +100,13 @@
 
 .login-header {
   text-align: center;
+  font-family: staatliches;
+  font-size: 40px;
+  
 }
 
 .login-signup-button {
-  background-color: #4caf50;
+  background-color: #000000;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -138,5 +141,56 @@
 }
 
 .welcome-button:hover {
+  background-color: #000000;
+}
+
+/* JOURNAL NEW */
+.journal-new-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-top: 5px;
+  transition: border-color 0.3s ease-in-out;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #3498db;
+}
+
+button {
+  background-color: #000000;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
   background-color: #000000;
 }

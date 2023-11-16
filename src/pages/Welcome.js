@@ -16,9 +16,9 @@ const WelcomePage = () => {
   
     return (
       <div style={backgroundStyle}>
-        <header>
-          <h1>Within</h1>
-          <h2>Ignite the Possible</h2>
+        <header style={{ textAlign: 'center', fontFamily: 'Staatliches' }}>
+            <h1 style={{ fontSize: '140px', color: 'white', margin: '0' }}>Within</h1>
+            <h2 style={{ fontSize: '60px', color: 'white', margin: '0' }}>Ignite the Possible</h2>
         </header>
         <div className="button-container">
           <Link to="/login" className="welcome-button">
