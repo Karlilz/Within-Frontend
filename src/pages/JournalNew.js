@@ -36,7 +36,7 @@ const JournalNew = () => {
     // textAlign: 'center',
     fontSize: '80px',
     color: 'black',
-    // margin: '0',
+    margin: '0',
     marginTop: '20px', // Increase marginTop to move the h1 down
     fontFamily: 'Staatliches',
   };
@@ -56,7 +56,7 @@ const JournalNew = () => {
       <nav style={navStyle}>
         <ul style={{ listStyleType: 'none', padding: 0, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <li style={navItemStyle}>
-            <Link to="/journal" style={navLinkStyle}>Journal Entries</Link>
+            <Link to="/home" style={navLinkStyle}>Home</Link>
           </li>
           <li style={navItemStyle}>
             <Link to="/goal" style={navLinkStyle}>Goals</Link>
