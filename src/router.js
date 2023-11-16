@@ -11,6 +11,7 @@ import Home from './pages/Home';
 import JournalNew from './pages/JournalNew';
 import Goal from './pages/Goal'
 import Profile from './pages/Profile';
+import Logout from './components/Logout';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -23,6 +24,7 @@ const router = createBrowserRouter(
             <Route path="/journal" element={<JournalNew/>}/>
             <Route path="/goal" element={<Goal/>}/>
             <Route path='/profile' element={<Profile/>}/>
+            <Route path='/logout' element={<Logout/>}/>
         </Route>
       </>
     )
