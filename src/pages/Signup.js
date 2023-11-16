@@ -1,32 +1,28 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-function SignupPage() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+const Signup = () => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleSignup = async (e) => {
+  async function signUp(e) {
     e.preventDefault();
-    // const response = await fetch(URL + 'token/signup/', {
-    const response = await fetch("http://localhost:8000/signup/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+    const response = await fetch('http://localhost:3000/signup', {
+    // const response = await fetch('https://within.onrender.com', {
+      method: 'POST',
       body: JSON.stringify({ username, password }),
+      headers: { 'Content-Type': 'application/json' },
     });
 
-    if (response.ok) {
-      console.log("Signup successful");
-      navigate("/login");
+    if (response.status === 201) {
+      navigate('/login');
     } else {
-      const errorData = await response.json();
-      console.error(errorData);
+      alert('Sign up Failed!');
     }
-  };
+  }
 
-  const backgroundStyle = {
+    const backgroundStyle = {
     backgroundImage: 'url(/Images/SignupPage4.png)',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
@@ -39,7 +35,7 @@ function SignupPage() {
 
   return (
     <div className="signup-container" style={backgroundStyle}>
-      <form onSubmit={handleSignup} className="signup-form">
+      <form onSubmit={signUp} className="signup-form">
         <h1 style={{ fontSize: '140px', color: 'black', margin: '0', fontFamily: 'Staatliches' }}>Within</h1>
         <h2 style={{ fontSize: '60px', color: 'black', margin: '0', fontFamily: 'Staatliches' }}>Unleash Your Inner Confidence</h2>
         <input
@@ -60,10 +56,10 @@ function SignupPage() {
       </form>
 
       <button>
-          <Link to="/within" style={{ textDecoration: 'none', color:'white' }}>Back</Link>
+          <Link to="/within" style={{ textDecoration: 'none', color:'white', backgroundColor:'black' }}>Back</Link>
         </button>
     </div>
   );
 }
 
-export default SignupPage;
+export default Signup;
