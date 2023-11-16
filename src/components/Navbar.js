@@ -12,16 +12,20 @@ const AuthenticatedNavbar = () => {
   return (
     <div>
       <nav>
-        <Link to="/goals">
+        <Link to="/goal">
           <button>Goals</button>
         </Link>
 
         <Link to="/journal">
-          <button>Journal</button>
+          <button>Journal Entries</button>
         </Link>
 
         <Link to="/progress">
           <button>Progress</button>
+        </Link>
+
+        <Link to="/profile">
+            <button>Profile</button>
         </Link>
 
         <button onClick={logout}>Log Out</button>
