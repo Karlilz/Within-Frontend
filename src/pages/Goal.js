@@ -483,7 +483,7 @@
 
 
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 const URL = "http://localhost:3000/";
@@ -495,7 +495,6 @@ const Goal = () => {
   const [editingGoalId, setEditingGoalId] = useState(null);
   const [editedGoalText, setEditedGoalText] = useState('');
   const [editedDueDate, setEditedDueDate] = useState(null);
-  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     setNewGoal(e.target.value);
@@ -733,3 +732,4 @@ const Goal = () => {
 };
 
 export default Goal;
+
