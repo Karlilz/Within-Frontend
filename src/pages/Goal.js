@@ -53,7 +53,8 @@ const Goal = () => {
 
   const handleEditGoal = (goalId) => {
     setEditingGoalId(goalId);
-    const goalToEdit = goals.find((goal) => goal.id === goalId);
+    // const goalToEdit = goals.find((goal) => goal.id === goalId);
+    const goalToEdit = goals.find((goal) => goal._id === goalId);
     setEditedGoalText(goalToEdit.content);
     setEditedDueDate(goalToEdit.dueDate ? new Date(goalToEdit.dueDate) : null);
   };
@@ -69,7 +70,7 @@ const Goal = () => {
         body: JSON.stringify({
           content: editedGoalText,
           dueDate: editedDueDate,
-          goal: "Updated Goal Description",
+          // goal: "Updated Goal Description",
         }),
       });
 
@@ -169,7 +170,7 @@ const Goal = () => {
             <Link to="/home" style={navLinkStyle}>Home</Link>
           </li>
           <li style={navItemStyle}>
-            <Link to="/journal" style={navLinkStyle}>Journal Entries</Link>
+            <Link to="/journal" style={navLinkStyle}>Mood Journal</Link>
           </li>
           <li style={navItemStyle}>
             <Link to="/profile" style={navLinkStyle}>Profile</Link>
@@ -200,7 +201,7 @@ const Goal = () => {
       </div>
       <button onClick={handleAddGoal}>Add Goal</button>
 
-      <h2>Goal List</h2>
+      <h2 style={{textDecoration:'underline'}}>Goal List</h2>
       {goals.length === 0 ? (
         <p>No Goals Added Yet</p>
       ) : (

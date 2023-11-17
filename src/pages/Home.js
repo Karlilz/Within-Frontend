@@ -74,7 +74,7 @@ const Home = () => {
         <div style={centeredNavStyle}>
           <ul style={{ listStyleType: 'none', padding: 0, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <li style={navItemStyle}>
-              <Link to="/journal" style={navLinkStyle}>Journal Entries</Link>
+              <Link to="/journal" style={navLinkStyle}>Mood Journal</Link>
             </li>
             <li style={navItemStyle}>
               <Link to="/goal" style={navLinkStyle}>Goals</Link>
