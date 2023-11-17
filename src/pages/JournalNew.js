@@ -114,9 +114,9 @@ const JournalNew = () => {
             <li style={navItemStyle}>
               <Link to="/goal" style={navLinkStyle}>Goals</Link>
             </li>
-            <li style={navItemStyle}>
+            {/* <li style={navItemStyle}>
               <Link to="/profile" style={navLinkStyle}>Profile</Link>
-            </li>
+            </li> */}
             <li style={navItemStyle}>
               <Link to="/logout" style={navLinkStyle}>Logout</Link>
             </li>

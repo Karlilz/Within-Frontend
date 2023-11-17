@@ -174,9 +174,9 @@ const Goal = () => {
           <li style={navItemStyle}>
             <Link to="/journal" style={navLinkStyle}>Mood Journal</Link>
           </li>
-          <li style={navItemStyle}>
+          {/* <li style={navItemStyle}>
             <Link to="/profile" style={navLinkStyle}>Profile</Link>
-          </li>
+          </li> */}
           <li style={navItemStyle}>
             <Link to="/logout" style={navLinkStyle}>Logout</Link>
           </li>
