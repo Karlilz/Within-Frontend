@@ -9,39 +9,22 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // const formData = new FormData();
-    // formData.append('username', username);
-    // formData.append('password', password);
+    const response = await fetch('http://localhost:3000/login', {
+      method: 'POST',
+      body: JSON.stringify({ username, password }),
+      headers: { 'Content-Type': 'application/json' },
+    });
 
-    // try {
-    //   const response = await fetch("http://localhost:3000/login/", {
-    //     method: 'POST',
-    //     body: formData,
-    //   });
-
-
-      // async function signUp(e) {
-      //   e.preventDefault();
-        const response = await fetch('http://localhost:3000/login', {
-        // const response = await fetch('https://within.onrender.com', {
-          method: 'POST',
-          body: JSON.stringify({ username, password }),
-          headers: { 'Content-Type': 'application/json' },
-        });
-
-      if (response.ok) {
-        const data = await response.json();
-        const token = data.token;
-        console.log('Received token:', token);
-        console.log(data);
-        localStorage.setItem('token', data.auth_token);
-        navigate('/home');
-      } else {
-        console.error('Login failed');
-      }
-    // }, catch (error) {
-    //   console.error('Error:', error);
-    // }
+    if (response.ok) {
+      const data = await response.json();
+      const token = data.token;
+      console.log('Received token:', token);
+      console.log(data);
+      localStorage.setItem('token', data.auth_token);
+      navigate('/home');
+    } else {
+      console.error('Login failed');
+    }
   };
 
   const backgroundStyle = {
@@ -83,10 +66,14 @@ const Login = () => {
         <button type="submit" className="login-button">Log In</button>
       </form>
 
-      <button>
+      <button className="login-button">
         <Link to="/within" style={{ textDecoration: 'none', color: 'white' }}>Back</Link>
       </button>
     </div>
   );
-  }
+}
+
 export default Login;
+
+
+

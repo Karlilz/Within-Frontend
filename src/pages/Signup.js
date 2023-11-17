@@ -55,7 +55,7 @@ const Signup = () => {
         <button type="submit" className="signup-button">Sign Up</button>
       </form>
 
-      <button>
+      <button className="signup-button">
           <Link to="/within" style={{ textDecoration: 'none', color:'white', backgroundColor:'black' }}>Back</Link>
         </button>
     </div>

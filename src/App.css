@@ -81,7 +81,7 @@
 }
 
 .login-input {
-  width: 300px; /* Adjust the width as needed */
+  width: 300px; 
   padding: 10px;
   margin: 10px;
   border: 1px solid #ccc;
@@ -113,7 +113,7 @@
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
-  margin-top: 20px; /* Adjust margin as needed */
+  margin-top: 20px;
 }
 
 /* WELCOME PAGE */
@@ -137,7 +137,7 @@
   font-size: 16px;
   text-align: center;
   display: block;
-  width: 200px; /* Adjust the width as needed */
+  width: 200px; 
 }
 
 .welcome-button:hover {

@@ -55,6 +55,8 @@ const Goal = () => {
     setEditingGoalId(goalId);
     // const goalToEdit = goals.find((goal) => goal.id === goalId);
     const goalToEdit = goals.find((goal) => goal._id === goalId);
+    console.log(goals);
+    console.log(goalId)
     setEditedGoalText(goalToEdit.content);
     setEditedDueDate(goalToEdit.dueDate ? new Date(goalToEdit.dueDate) : null);
   };
@@ -80,7 +82,7 @@ const Goal = () => {
 
       const updatedGoal = await response.json();
       const updatedGoals = goals.map((goal) =>
-        goal.id === editingGoalId ? updatedGoal : goal
+        goal._id === editingGoalId ? updatedGoal : goal
       );
       setGoals(updatedGoals);
       setEditingGoalId(null);
@@ -103,7 +105,7 @@ const Goal = () => {
         throw new Error('Failed to delete goal');
       }
 
-      const updatedGoals = goals.filter((goal) => goal.id !== goalId);
+      const updatedGoals = goals.filter((goal) => goal._id !== goalId);
       setGoals(updatedGoals);
     } catch (error) {
       console.error('Error deleting goal:', error.message);
@@ -207,8 +209,8 @@ const Goal = () => {
       ) : (
         <ul>
           {goals.map((goal) => (
-            <li key={goal.id}>
-              {editingGoalId === goal.id ? (
+            <li key={goal._id}>
+              {editingGoalId === goal._id ? (
                 <>
                   <input
                     type="text"
@@ -226,7 +228,7 @@ const Goal = () => {
               ) : (
                 <>
                   {goal.content}
-                  <button onClick={() => handleEditGoal(goal.id)}>Edit</button>
+                  <button onClick={() => handleEditGoal(goal._id)}>Edit</button>
                   <button onClick={() => handleDeleteGoal(goal._id)}>Delete</button>
                 </>
               )}
