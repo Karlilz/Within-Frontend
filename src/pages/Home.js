@@ -20,9 +20,11 @@ const Home = () => {
 
   const affirmationStyle = {
     fontFamily: 'Staatliches',
-    fontSize: '100px',
-    color: 'pink',
-    textAlign: 'center'
+    fontSize: '120px',
+    color: 'white',
+    textAlign: 'center',
+    opacity: 0, // Set initial opacity to 0 for the fade-in effect
+    animation: 'fadeIn 1s forwards', // Use the 'fadeIn' animation for 2 seconds
   };
 
   // Additional styles for horizontal navigation
@@ -50,12 +52,14 @@ const Home = () => {
   const centeredNavStyle = {
     flex: 1,
     display: 'flex',
-    justifyContent: 'center',
+    // justifyContent: 'center',
+    justifyContent: 'flex-end', // Change to 'flex-end' to align items to the right
     alignItems: 'center',
   };
 
   const navItemStyle = {
     margin: '0 45px',
+    marginLeft: '20px', // Add margin to create space between items
   };
 
   const navLinkStyle = {
@@ -65,8 +69,13 @@ const Home = () => {
     fontFamily: 'Staatliches',
   };
 
+  const containerStyle = {
+    background: 'black',
+    minHeight: '100vh', // Ensure the background covers the entire viewport height
+  };
+
   return (
-    <div>
+    <div style={containerStyle}>
       <nav style={navStyle}>
         <Link to="/home" style={{ textDecoration: 'none' }}>
           <h1 style={h1Style}>Within</h1>
@@ -79,9 +88,9 @@ const Home = () => {
             <li style={navItemStyle}>
               <Link to="/goal" style={navLinkStyle}>Goals</Link>
             </li>
-            <li style={navItemStyle}>
+            {/* <li style={navItemStyle}>
               <Link to="/profile" style={navLinkStyle}>Profile</Link>
-            </li>
+            </li> */}
             <li style={navItemStyle}>
               <Link to="/logout" style={navLinkStyle}>Logout</Link>
             </li>
