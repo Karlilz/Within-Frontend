@@ -88,7 +88,11 @@ const affirmations = [
     "I am a powerful creator, and I create the life I desire",
     "I am grateful for the positive changes happening in my life",
     "I am a magnet for opportunities, and I attract success effortlessly",
-    "I am a beacon of confidence, strength, and positivity"
+    "I am a beacon of confidence, strength, and positivity", 
+    "Give yourself time",
+    "Don't Stop, Keep Going",
+    "Allow the road ahead of you to speak louder than the one behind you",
+    "The windshield is bigger than the rear view mirror for a reason"
     
   ];
   

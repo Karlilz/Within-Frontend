@@ -146,9 +146,6 @@ const JournalNew = () => {
         <button type="submit" style={buttonStyle}>Add Journal Entry</button>
       </Form>
 
-      {/* <button>
-        <Link to="/home" style={{ textDecoration: 'none', color: 'white' }}>Home</Link>
-      </button> */}
     </div>
   );
 };
