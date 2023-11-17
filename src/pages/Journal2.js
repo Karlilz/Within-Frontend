@@ -141,147 +141,147 @@ const Journal2 = () => {
     fetchJournalEntries();
   }, []);
 
+  const containerStyle = {
+    background: 'black',
+    minHeight: '100vh', 
+  };
+
+  const centeredNavStyle = {
+    flex: 1,
+    display: 'flex',
+    // justifyContent: 'center',
+    justifyContent: 'flex-end', 
+    alignItems: 'center',
+  };
+
   const navStyle = {
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    background: '#333',
+    background: 'black',
     padding: '10px',
     marginBottom: '80px',
+    position: 'relative',
   };
 
   const navItemStyle = {
-    margin: '0 15px',
+    margin: '0 45px',
+    marginLeft: '20px', 
   };
 
   const navLinkStyle = {
     color: 'white',
     textDecoration: 'none',
-    fontSize: '18px',
+    fontSize: '30px',
+    fontFamily: 'Staatliches',
   };
 
   const h1Style = {
     fontFamily: 'Staatliches',
     fontSize: '80px',
-    color: 'black',
-    marginTop: '20px',
+    color: 'white',
+    position: 'absolute',
+    left: '20px',
+    top: '-15%', 
+    transform: 'translateY(-50%)', 
+    zIndex: 1, 
   };
 
   return (
     <div>
-      {/* <h1 style={h1Style}>Within</h1>
+      <div style={containerStyle}>
+        <nav style={navStyle}>
+          <Link to="/home" style={{ textDecoration: 'none' }}>
+            <h1 style={h1Style}>Within</h1>
+          </Link>
+          <div style={centeredNavStyle}>
+            <ul style={{ listStyleType: 'none', padding: 0, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+              <li style={navItemStyle}>
+                <Link to="/journal" style={navLinkStyle}>Mood Journal</Link>
+              </li>
+              <li style={navItemStyle}>
+                <Link to="/goal" style={navLinkStyle}>Goals</Link>
+              </li>
+              <li style={navItemStyle}>
+                <Link to="/logout" style={navLinkStyle}>Logout</Link>
+              </li>
+            </ul>
+          </div>
+        </nav>
 
-      <nav style={navStyle}>
-        <ul style={{ listStyleType: 'none', padding: 0, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <li style={navItemStyle}>
-            <Link to="/home" style={navLinkStyle}>Home</Link>
-          </li>
-          <li style={navItemStyle}>
-            <Link to="/journal" style={navLinkStyle}>Mood Journal</Link>
-          </li>
-          {/* <li style={navItemStyle}>
-            <Link to="/profile" style={navLinkStyle}>Profile</Link>
-          </li> */}
-          {/* <li style={navItemStyle}>
-            <Link to="/logout" style={navLinkStyle}>Logout</Link>
-          </li>
-        </ul>
-      </nav> */} */}
+        <h2 style={{color:"white", fontFamily: 'Staatliches', fontSize:"40px"}}>Create a New Journal Entry</h2>
+        <div>
+          <input
+            placeholder='Title'
+            type="text"
+            id="newTitle"
+            value={newTitle}
+            onChange={handleTitleChange}
+          />
+        </div>
+        <div>
+          <textarea
+            placeholder='Content'
+            id="newContent"
+            value={newContent}
+            onChange={handleContentChange}
+          />
+        </div>
+        <div>
+          <DatePicker
+            placeholderText="Select Date"
+            selected={newDate}
+            onChange={handleDateChange}
+            dateFormat="MM/dd/yyyy"
+          />
+        </div>
+        <button onClick={handleAddEntry}>Add Entry</button>
 
-      return (
-        <div style={containerStyle}>
-          <nav style={navStyle}>
-            <Link to="/home" style={{ textDecoration: 'none' }}>
-              <h1 style={h1Style}>Within</h1>
-            </Link>
-            <div style={centeredNavStyle}>
-              <ul style={{ listStyleType: 'none', padding: 0, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <li style={navItemStyle}>
-                  <Link to="/journal" style={navLinkStyle}>Mood Journal</Link>
-                </li>
-                <li style={navItemStyle}>
-                  <Link to="/goal" style={navLinkStyle}>Goals</Link>
-                </li>
-                {/* <li style={navItemStyle}>
-                  <Link to="/profile" style={navLinkStyle}>Profile</Link>
-                </li> */}
-                <li style={navItemStyle}>
-                  <Link to="/logout" style={navLinkStyle}>Logout</Link>
-                </li>
-              </ul>
-            </div>
-          </nav>
-
-      <h2>Create a New Journal Entry</h2>
-      <div>
-        <input
-          placeholder='Title'
-          type="text"
-          id="newTitle"
-          value={newTitle}
-          onChange={handleTitleChange}
-        />
+        <h2 style={{ textDecoration: 'underline', color:"white", fontFamily: 'Staatliches', fontSize:"30px" }}>Journal Entry List</h2>
+        {journalEntries.length === 0 ? (
+          <p style={{ color:"white", fontFamily: 'Staatliches', fontSize:"20px" }}>No Entries Added Yet</p>
+        ) : (
+          <ul>
+            {journalEntries.map((entry) => (
+              <li key={entry._id}>
+                {editingEntryId === entry._id ? (
+                  <>
+                    <input
+                      type="text"
+                      value={editedTitle}
+                      onChange={(e) => setEditedTitle(e.target.value)}
+                    />
+                    <textarea
+                      value={editedContent}
+                      onChange={(e) => setEditedContent(e.target.value)}
+                    />
+                    <DatePicker
+                      placeholderText="Select Date"
+                      selected={editedDate}
+                      onChange={(date) => setEditedDate(date)}
+                      dateFormat="MM/dd/yyyy"
+                    />
+                    <button onClick={handleSaveEditedEntry}>Save</button>
+                  </>
+                ) : (
+                  <>
+                    <strong>{entry.title}</strong>
+                    <p>{entry.content}</p>
+                    <p>Date: {new Date(entry.date).toLocaleDateString()}</p>
+                    <button onClick={() => handleEditEntry(entry._id)}>Edit</button>
+                    <button onClick={() => handleDeleteEntry(entry._id)}>Delete</button>
+                  </>
+                )}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
-      <div>
-        <textarea
-          placeholder='Content'
-          id="newContent"
-          value={newContent}
-          onChange={handleContentChange}
-        />
-      </div>
-      <div>
-        <DatePicker
-          placeholderText="Select Date"
-          selected={newDate}
-          onChange={handleDateChange}
-          dateFormat="MM/dd/yyyy"
-        />
-      </div>
-      <button onClick={handleAddEntry}>Add Entry</button>
-
-      <h2 style={{ textDecoration: 'underline' }}>Journal Entry List</h2>
-      {journalEntries.length === 0 ? (
-        <p>No Entries Added Yet</p>
-      ) : (
-        <ul>
-          {journalEntries.map((entry) => (
-            <li key={entry._id}>
-              {editingEntryId === entry._id ? (
-                <>
-                  <input
-                    type="text"
-                    value={editedTitle}
-                    onChange={(e) => setEditedTitle(e.target.value)}
-                  />
-                  <textarea
-                    value={editedContent}
-                    onChange={(e) => setEditedContent(e.target.value)}
-                  />
-                  <DatePicker
-                    placeholderText="Select Date"
-                    selected={editedDate}
-                    onChange={(date) => setEditedDate(date)}
-                    dateFormat="MM/dd/yyyy"
-                  />
-                  <button onClick={handleSaveEditedEntry}>Save</button>
-                </>
-              ) : (
-                <>
-                  <strong>{entry.title}</strong>
-                  <p>{entry.content}</p>
-                  <p>Date: {new Date(entry.date).toLocaleDateString()}</p>
-                  <button onClick={() => handleEditEntry(entry._id)}>Edit</button>
-                  <button onClick={() => handleDeleteEntry(entry._id)}>Delete</button>
-                </>
-              )}
-            </li>
-          ))}
-        </ul>
-      )}
     </div>
-    
   );
-  
+};
 
 export default Journal2;
+
+
+
