@@ -209,7 +209,7 @@ const Journal2 = () => {
           </div>
         </nav>
 
-        <h2 style={{color:"white", fontFamily: 'Staatliches', fontSize:"40px"}}>Create a New Journal Entry</h2>
+        <h2 style={{color:"white", fontFamily: 'Staatliches', fontSize:"40px", textDecoration:"underline"}}>Create a New Journal Entry</h2>
         <div>
           <input
             placeholder='Title'
@@ -265,8 +265,8 @@ const Journal2 = () => {
                   </>
                 ) : (
                   <>
-                    <strong>{entry.title}</strong>
-                    <p>{entry.content}</p>
+                    <strong style={{color:'white'}}>{entry.title}</strong>
+                    <p style={{color:'white'}}>{entry.content}</p>
                     <p>Date: {new Date(entry.date).toLocaleDateString()}</p>
                     <button onClick={() => handleEditEntry(entry._id)}>Edit</button>
                     <button onClick={() => handleDeleteEntry(entry._id)}>Delete</button>
