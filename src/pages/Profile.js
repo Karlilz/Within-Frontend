@@ -46,7 +46,7 @@ const Profile = () => {
       )}
 
       <button>
-        <Link to="/home" style={{ textDecoration: 'none', color: 'white' }}>
+        <Link to="/home" style={{ textDecoration: 'none', color: 'black' }}>
           Home
         </Link>
       </button>

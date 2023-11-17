@@ -8,11 +8,11 @@ import Signup from "./pages/Signup";
 import App from './App';
 import Welcome from './pages/Welcome';
 import Home from './pages/Home';
-import JournalNew from './pages/JournalNew';
+// import JournalNew from './pages/JournalNew';
 import Goal from './pages/Goal'
 import Profile from './pages/Profile';
 import Logout from './components/Logout';
-// import Journal from './pages/Journal';
+import Journal from './pages/Journal';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -22,8 +22,8 @@ const router = createBrowserRouter(
             <Route path='/Within' element={<Welcome/>}/>
             <Route path="/login" element={<Login/>}/>
             <Route path="/signup" element={<Signup/>}/>
-            <Route path="/journal" element={<JournalNew/>}/>
-            {/* <Route path='/journal' element={<Journal/>}/> */}
+            {/* <Route path="/journal" element={<JournalNew/>}/> */}
+            <Route path='/journal' element={<Journal/>}/>
             <Route path="/goal" element={<Goal/>}/>
             <Route path='/profile' element={<Profile/>}/>
             <Route path='/logout' element={<Logout/>}/>
