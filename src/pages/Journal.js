@@ -6,7 +6,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 const URL = "http://localhost:3000/";
 // const URL = "https://within.onrender.com"
 
-const Journal2 = () => {
+const Journal = () => {
   const [newTitle, setNewTitle] = useState('');
   const [newContent, setNewContent] = useState('');
   const [newDate, setNewDate] = useState(null);
@@ -210,7 +210,7 @@ const Journal2 = () => {
           </div>
         </nav>
 
-        <h2 style={{color:"white", fontFamily: 'Staatliches', fontSize:"40px", textDecoration:"underline"}}>Create a New Journal Entry</h2>
+        <h2 style={{color:"white", fontFamily: 'Staatliches', fontSize:"40px", textDecoration:"underline"}}>Create a Journal Entry</h2>
         <div>
           <input
             placeholder='Title'
@@ -282,4 +282,4 @@ const Journal2 = () => {
   );
 };
 
-export default Journal2;
+export default Journal;
