@@ -8,8 +8,8 @@ const Signup = () => {
 
   async function signUp(e) {
     e.preventDefault();
-    // const response = await fetch('http://localhost:3000/signup', {
-    const response = await fetch('https://within.onrender.com/signup', {
+    const response = await fetch('http://localhost:3000/signup', {
+    // const response = await fetch('https://within.onrender.com/signup', {
       method: 'POST',
       body: JSON.stringify({ username, password }),
       headers: { 'Content-Type': 'application/json' },

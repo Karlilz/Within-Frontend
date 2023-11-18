@@ -1,8 +1,6 @@
-// MODULES
 import React from 'react';
 import {createBrowserRouter,createRoutesFromElements,Route} from "react-router-dom";
 
-// COMPONENTS
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import App from './App';
@@ -11,7 +9,6 @@ import Home from './pages/Home';
 import Goal from './pages/Goal'
 import Logout from './components/Logout';
 import Journal2 from './pages/Journal2';
-// import Journal from './pages/Journal';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -24,7 +21,6 @@ const router = createBrowserRouter(
             <Route path='/journal' element={<Journal2/>}/>
             <Route path="/goal" element={<Goal/>}/>
             <Route path='/logout' element={<Logout/>}/>
-            {/* <Route path='/journal' element={<Journal/>}/> */}
         </Route>
       </>
     )

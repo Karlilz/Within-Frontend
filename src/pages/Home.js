@@ -51,7 +51,6 @@ const Home = () => {
   const centeredNavStyle = {
     flex: 1,
     display: 'flex',
-    // justifyContent: 'center',
     justifyContent: 'flex-end', 
     alignItems: 'center',
   };
