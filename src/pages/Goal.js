@@ -237,39 +237,42 @@ const Goal = () => {
 
         <h2 style={{ textDecoration: 'underline', color: "white", fontFamily: 'Staatliches', fontSize: "30px" }}>Goal List</h2>
         {goals.length === 0 ? (
-          <p style={{ color: "white", fontFamily: 'Staatliches', fontSize: "20px" }}>No Goals Added Yet</p>
+  <p style={{ color: "white", fontFamily: 'Staatliches', fontSize: "20px" }}>No Goals Added Yet</p>
+) : (
+  <ul>
+    {goals.map((goal) => (
+      <li key={goal._id}>
+        {editingGoalId === goal._id ? (
+          <>
+            <input
+              type="text"
+              value={editedGoalText}
+              onChange={(e) => setEditedGoalText(e.target.value)}
+              style={inputStyle}
+            />
+            <DatePicker
+              placeholderText="Select Due Date"
+              selected={editedDueDate}
+              onChange={(date) => setEditedDueDate(date)}
+              dateFormat="MM/dd/yyyy"
+              style={inputStyle}
+            />
+            <button onClick={handleSaveEditedGoal} style={buttonStyle}>Save</button>
+          </>
         ) : (
-          <ul>
-            {goals.map((goal) => (
-              <li key={goal._id}>
-                {editingGoalId === goal._id ? (
-                  <>
-                    <input
-                      type="text"
-                      value={editedGoalText}
-                      onChange={(e) => setEditedGoalText(e.target.value)}
-                      style={inputStyle}
-                    />
-                    <DatePicker
-                      placeholderText="Select Due Date"
-                      selected={editedDueDate}
-                      onChange={(date) => setEditedDueDate(date)}
-                      dateFormat="MM/dd/yyyy"
-                      style={inputStyle}
-                    />
-                    <button onClick={handleSaveEditedGoal} style={buttonStyle}>Save</button>
-                  </>
-                ) : (
-                  <>
-        <p style={{ color: 'white' }}>{goal.content}</p>
-                    <button onClick={() => handleEditGoal(goal._id)} style={buttonStyle}>Edit</button>
-                    <button onClick={() => handleDeleteGoal(goal._id)} style={buttonStyle}>Delete</button>
-                  </>
-                )}
-              </li>
-            ))}
-          </ul>
+          <>
+            <p style={{ color: 'white' }}>{goal.content}</p>
+            {goal.dueDate && (
+              <p style={{ color: 'white', fontSize: '14px' }}>Due Date: {new Date(goal.dueDate).toLocaleDateString()}</p>
+            )}
+            <button onClick={() => handleEditGoal(goal._id)} style={buttonStyle}>Edit</button>
+            <button onClick={() => handleDeleteGoal(goal._id)} style={buttonStyle}>Delete</button>
+          </>
         )}
+      </li>
+    ))}
+  </ul>
+)}
       </div>
     </div>
   );
