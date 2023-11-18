@@ -21,6 +21,7 @@ const Login = () => {
       console.log('Received token:', token);
       console.log(data);
       localStorage.setItem('token', data.auth_token);
+      localStorage.setItem('userId', data.userId);
       navigate('/home');
     } else {
       console.error('Login failed');
