@@ -291,7 +291,8 @@ import { Link } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-const URL = "http://localhost:3000/";
+// const URL = "http://localhost:3000/";
+const URL = "https://within.onrender.com"
 
 const Journal2 = () => {
   const [newTitle, setNewTitle] = useState('');
