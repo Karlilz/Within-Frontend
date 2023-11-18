@@ -10,7 +10,6 @@ import Welcome from './pages/Welcome';
 import Home from './pages/Home';
 // import JournalNew from './pages/JournalNew';
 import Goal from './pages/Goal'
-import Profile from './pages/Profile';
 import Logout from './components/Logout';
 import Journal2 from './pages/Journal2';
 // import Journal from './pages/Journal';
@@ -27,7 +26,6 @@ const router = createBrowserRouter(
             {/* <Route path='/journal' element={<Journal/>}/> */}
             <Route path='/journal' element={<Journal2/>}/>
             <Route path="/goal" element={<Goal/>}/>
-            <Route path='/profile' element={<Profile/>}/>
             <Route path='/logout' element={<Logout/>}/>
         </Route>
       </>

@@ -23,11 +23,10 @@ const Home = () => {
     fontSize: '120px',
     color: 'white',
     textAlign: 'center',
-    opacity: 0, // Set initial opacity to 0 for the fade-in effect
-    animation: 'fadeIn 1s forwards', // Use the 'fadeIn' animation for 2 seconds
+    opacity: 0, 
+    animation: 'fadeIn 1s forwards', 
   };
 
-  // Additional styles for horizontal navigation
   const navStyle = {
     display: 'flex',
     justifyContent: 'space-between',
@@ -44,22 +43,22 @@ const Home = () => {
     color: 'white',
     position: 'absolute',
     left: '20px',
-    top: '-15%', // Adjusted top position
-    transform: 'translateY(-50%)', // Center vertically using translateY
-    zIndex: 1, // Ensure the h1 is above other elements
+    top: '-15%', 
+    transform: 'translateY(-50%)', 
+    zIndex: 1, 
   };
 
   const centeredNavStyle = {
     flex: 1,
     display: 'flex',
     // justifyContent: 'center',
-    justifyContent: 'flex-end', // Change to 'flex-end' to align items to the right
+    justifyContent: 'flex-end', 
     alignItems: 'center',
   };
 
   const navItemStyle = {
     margin: '0 45px',
-    marginLeft: '20px', // Add margin to create space between items
+    marginLeft: '20px', 
   };
 
   const navLinkStyle = {
@@ -71,7 +70,7 @@ const Home = () => {
 
   const containerStyle = {
     background: 'black',
-    minHeight: '100vh', // Ensure the background covers the entire viewport height
+    minHeight: '100vh', 
   };
 
   return (
@@ -88,9 +87,6 @@ const Home = () => {
             <li style={navItemStyle}>
               <Link to="/goal" style={navLinkStyle}>Goals</Link>
             </li>
-            {/* <li style={navItemStyle}>
-              <Link to="/profile" style={navLinkStyle}>Profile</Link>
-            </li> */}
             <li style={navItemStyle}>
               <Link to="/logout" style={navLinkStyle}>Logout</Link>
             </li>

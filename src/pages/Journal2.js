@@ -237,7 +237,7 @@ const Journal2 = () => {
         </div>
         <button onClick={handleAddEntry}>Add Entry</button>
 
-        <h2 style={{ textDecoration: 'underline', color:"white", fontFamily: 'Staatliches', fontSize:"30px" }}>Journal Entry List</h2>
+        <h2 style={{ textDecoration: 'underline', color:"white", fontFamily: 'Staatliches', fontSize:"30px" }}>Journal List</h2>
         {journalEntries.length === 0 ? (
           <p style={{ color:"white", fontFamily: 'Staatliches', fontSize:"20px" }}>No Entries Added Yet</p>
         ) : (
