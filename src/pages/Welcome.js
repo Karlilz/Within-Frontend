@@ -5,7 +5,7 @@ const WelcomePage = () => {
     const backgroundStyle = {
       backgroundImage: 'url(/Images/WithinWelcome8.png)', 
       backgroundSize: 'cover',
-      backgroundPosition: '-80% center', // Adjsted the horizontal position to 'left'
+      backgroundPosition: '-80% center', 
       height: '100vh',
       display: 'flex',
       flexDirection: 'column',
