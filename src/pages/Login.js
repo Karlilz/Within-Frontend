@@ -28,6 +28,8 @@ const Login = () => {
     } else {
       console.error('Login failed');
     }
+
+    navigate('/home');
   };
 
   const backgroundStyle = {

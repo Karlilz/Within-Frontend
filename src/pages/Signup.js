@@ -18,7 +18,7 @@ const Signup = () => {
     if (response.status === 201) {
       navigate('/login');
     } else {
-      alert('Sign up Failed!');
+      navigate('/login');
     }
   }
 
