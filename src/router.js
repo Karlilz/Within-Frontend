@@ -6,11 +6,9 @@ import Signup from "./pages/Signup";
 import App from './App';
 import Welcome from './pages/Welcome';
 import Home from './pages/Home';
-// import Goal from './pages/Goal'
-import Goal2 from './pages/Goal2';
+import Goal from './pages/Goal';
 import Logout from './components/Logout';
-// import Journal from './pages/Journal';
-import Journal2 from './pages/Journal2';
+import Journal from './pages/Journal';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -21,8 +19,8 @@ const router = createBrowserRouter(
             <Route path='/within' element={<Welcome/>}/>
             <Route path="/login" element={<Login/>}/>
             <Route path="/signup" element={<Signup/>}/>
-            <Route path='/journal' element={<Journal2/>}/>
-            <Route path="/goal" element={<Goal2/>}/>
+            <Route path='/journal' element={<Journal/>}/>
+            <Route path="/goal" element={<Goal/>}/>
             <Route path='/logout' element={<Logout/>}/>
         </Route>
       </>
